@@ -3,5 +3,4 @@
 UPDATE_INTERVAL = 1
 
 [server]
-HOST = "localhost"
 PORT = 8080
