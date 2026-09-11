@@ -12,7 +12,8 @@ func setupRoutes() {
 	http.HandleFunc("/", homePage)
 }
 
-func httpLaunch() {
+func HttpLaunch() {
 	log.Println("HTTP up and running...")
-	log.Fatal()
+	setupRoutes()
+	http.ListenAndServe(":8080", nil)
 }

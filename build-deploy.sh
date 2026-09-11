@@ -22,12 +22,11 @@ if ! go version 2>/dev/null; then
 fi
 
 cd "$GO_PROJECT_MAIN_DIR"
-go build -o goinmetrics "./cmd/goinmetrics"
-if ! find ${GO_PROJECT_MAIN_DIR} -name goinmetrics 2>/dev/null; then
+if ! go build -o goinmetrics "./cmd/goinmetrics"; then
 	fatal_exit "Backend build proccess error..."
 fi
 
 mkdir "${BIN_DIR}"
-
 mv "${GO_PROJECT_MAIN_DIR}/goinmetrics" "${BIN_DIR}/goinmetrics"
+chmod +x "${BIN_DIR}/goinmetrics"
 

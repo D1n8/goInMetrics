@@ -1,4 +1,4 @@
-package goinmetrics
+package main
 
 import "fmt"
 
