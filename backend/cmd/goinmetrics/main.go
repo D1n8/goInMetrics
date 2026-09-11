@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"backend/internal/server"
+)
 
 func main() {
-	fmt.Println("Server logic")
+	server.HttpLaunch()
 }
