@@ -30,3 +30,13 @@ mkdir "${BIN_DIR}"
 mv "${GO_PROJECT_MAIN_DIR}/goinmetrics" "${BIN_DIR}/goinmetrics"
 chmod +x "${BIN_DIR}/goinmetrics"
 
+echo "${GREEN}Build complete...${RESET}"
+echo  "${GREEN}Do you want to launch server now?${RESET}"
+read -p "[y/n]: " SELECT
+
+case $SELECT in
+	y|Y|yes) echo "Launching..."
+		exec ${SCRIPT_DIR}/bin/goinmetrics	;;
+	*)	echo "Finishing..."			;;
+esac
+

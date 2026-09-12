@@ -14,6 +14,7 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello World")
 }
 func setupRoutes() {
+	http.HandleFunc("/ws", wsHandler)
 	http.HandleFunc("/", homePage)
 }
 
@@ -23,7 +24,10 @@ func HttpLaunch() {
 		log.Fatal(err)
 	}
 
+	Port :=  cfg.Server.Port
+
 	log.Println("HTTP up and running...")
+	log.Printf("%s:%d", "http://localhost", Port)
 	setupRoutes()
-	http.ListenAndServe(fmt.Sprintf(":%d", cfg.Server.Port), nil)
+	http.ListenAndServe(fmt.Sprintf(":%d", Port), nil)
 }
