@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "hostname": "srv-prod-01",
+    "os": "Ubuntu 22.04",
+    "updatedAt": "2026-09-12T14:32:00Z",
+    "interval": 60
+  },
+  "cpu": {
+    "model": "AMD Ryzen 9 5950X",
+    "cores": 16,
+    "threads": 32,
+    "usage": 45.2,
+    "temp": 62,
+    "frequency": 3900,
+    "loadAvg": [1.2, 0.9, 0.7],
+    "perCore": [
+      { "core": 0, "usage": 40.1, "temp": 60 },
+      { "core": 1, "usage": 52.3, "temp": 64 },
+      { "core": 2, "usage": 38.7, "temp": 59 }
+    ]
+  },
+  "memory": {
+    "used": 12.4,
+    "total": 32,
+    "free": 19.6,
+    "cached": 5.1,
+    "percent": 38.7,
+    "swap": {
+      "used": 1.2,
+      "total": 8,
+      "percent": 15
+    }
+  },
+  "disk": [
+    {
+      "mount": "/",
+      "fs": "ext4",
+      "used": 340,
+      "total": 1024,
+      "percent": 33.2
+    },
+    {
+      "mount": "/data",
+      "fs": "xfs",
+      "used": 1820,
+      "total": 4096,
+      "percent": 44.4
+    }
+  ],
+  "network": {
+    "interfaces": [
+      {
+        "name": "eth0",
+        "download": 15.4,
+        "upload": 3.2,
+        "totalRx": 102400,
+        "totalTx": 20480
+      }
+    ],
+    "latency": 24
+  },
+  "processes": {
+    "total": 284,
+    "running": 3,
+    "sleeping": 278,
+    "top": [
+      { "pid": 1024, "name": "nginx", "cpu": 12.4, "mem": 4.1 },
+      { "pid": 2048, "name": "postgres", "cpu": 8.7, "mem": 15.2 },
+      { "pid": 3072, "name": "node", "cpu": 22.1, "mem": 9.8 }
+    ]
+  },
+  "uptime": 864000
+}
