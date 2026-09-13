@@ -9,7 +9,7 @@ import (
 )
 
 func checkOrigin(r *http.Request) bool {
-	// FIX:
+	// FIX: Add domain check
 	return true
 }
 
@@ -24,7 +24,7 @@ func wsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	// Close connection after any scenario
 	defer connection.Close()
-	// FIX:
+	// FIX:	move jsonData, err := pcstat.CollectData() into main.go
 	jsonData, err := pcstat.CollectData()
 	if err != nil {
 		log.Printf("%20s%v", "Collection error:", err)

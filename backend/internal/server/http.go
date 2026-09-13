@@ -2,6 +2,7 @@ package server
 
 import (
 	"backend/internal/config"
+	"backend/internal/pcstat"
 	"fmt"
 	"log"
 	"net/http"
@@ -11,7 +12,12 @@ import (
 func homePage(w http.ResponseWriter, r *http.Request) {
 	//http.ServeFile(w, r, "index.html")
 	log.Println(r)
-	fmt.Fprintf(w, "Hello World")
+	// FIX: REMOVE JsonData
+	JsonData, err := pcstat.CollectData()
+	if err != nil {
+		return
+	}
+	fmt.Fprintf(w, string(JsonData))
 }
 func setupRoutes() {
 	http.HandleFunc("/ws", wsHandler)
@@ -29,5 +35,6 @@ func HttpLaunch() {
 	log.Println("HTTP up and running...")
 	log.Printf("%s:%d", "http://localhost", Port)
 	setupRoutes()
+	// FIX: Availability Port check
 	http.ListenAndServe(fmt.Sprintf(":%d", Port), nil)
 }
