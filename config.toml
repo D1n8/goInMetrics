@@ -1,0 +1,6 @@
+
+[statistics]
+UPDATE_INTERVAL = 1
+
+[server]
+PORT = 8080
