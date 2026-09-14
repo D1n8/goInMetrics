@@ -13,7 +13,7 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	//http.ServeFile(w, r, "index.html")
 	log.Println(r)
 	// FIX: REMOVE JsonData
-	JsonData, err := pcstat.CollectData()
+	JsonData, err := pcstat.SendDataToServer()
 	if err != nil {
 		return
 	}

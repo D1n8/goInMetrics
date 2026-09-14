@@ -45,7 +45,7 @@ func getMemStat() Mem {
 
 }
 
-func memStatistic() string {
+func MemStatistic() string {
 	// Json values. All values return in Mb size
 	jsonData, err := json.Marshal(getMemStat())
 	if err != nil {
