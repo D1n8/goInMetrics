@@ -26,12 +26,17 @@ if ! go build -o goinmetrics "./cmd/goinmetrics"; then
 	fatal_exit "Backend build proccess error..."
 fi
 
+cd "$GO_PROJECT_MAIN_DIR"
+echo -e "${GREEN}Resolving dependencies...${RESET}"
+go mod tidy
+cd "$SCRIPT_DIR"
+
 mkdir "${BIN_DIR}"
 mv "${GO_PROJECT_MAIN_DIR}/goinmetrics" "${BIN_DIR}/goinmetrics"
 chmod +x "${BIN_DIR}/goinmetrics"
 
-echo "${GREEN}Build complete...${RESET}"
-echo  "${GREEN}Do you want to launch server now?${RESET}"
+echo -e "${GREEN}Build complete...${RESET}"
+echo -e "${GREEN}Do you want to launch server now?${RESET}"
 read -p "[y/n]: " SELECT
 
 case $SELECT in
