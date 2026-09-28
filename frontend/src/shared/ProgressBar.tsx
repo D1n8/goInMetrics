@@ -1,5 +1,5 @@
 interface IProgress {
-  progress: number;
+  progress: number | string;
   label?: string;
   color?: string;
   showValue?: boolean;
