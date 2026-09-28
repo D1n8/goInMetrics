@@ -4,6 +4,7 @@ import (
 	"backend/internal/pcstat"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/gorilla/websocket"
 )
@@ -24,16 +25,26 @@ func wsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	// Close connection after any scenario
 	defer connection.Close()
-	// FIX:	move jsonData, err := pcstat.SendDataToServer() into main.go
-	jsonData, err := pcstat.SendDataToServer()
-	if err != nil {
-		log.Printf("%20s%v", "Collection error:", err)
-		return
-	}
 
-	err = connection.WriteMessage(websocket.TextMessage, jsonData)
-	if err != nil {
-		log.Printf("%20s%v", "Write error:", err)
-		return
+	updateTicker := time.NewTicker(1 * time.Second)
+	defer updateTicker.Stop()
+
+	for {
+		select {
+		case <-updateTicker.C:
+
+			// FIX:	move jsonData, err := pcstat.SendDataToServer() into main.go
+			jsonData, err := pcstat.SendDataToServer()
+			if err != nil {
+				log.Printf("%20s%v", "Collection error:", err)
+				return
+			}
+
+			err = connection.WriteMessage(websocket.TextMessage, jsonData)
+			if err != nil {
+				log.Printf("%20s%v", "Write error:", err)
+				return
+			}
+		}
 	}
 }
