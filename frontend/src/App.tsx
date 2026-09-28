@@ -25,7 +25,7 @@ function App() {
   const [metrics, setMetrics] = useState<IMetrics | null>();
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8080/ws');
+    const ws = new WebSocket(`ws://localhost:5173/ws`);
     
     ws.onmessage = (event) => {
       setMetrics(JSON.parse(event.data));
@@ -37,7 +37,7 @@ function App() {
   return (
     <div>
       <h2>{metrics?.cpu.model}</h2>
-      <ProgressBar progress={metrics?.mem.used_percent.toFixed(2) ?? 0} label='Памяти используется' showValue/>
+      <ProgressBar progress={metrics?.mem.used_percent.toFixed(2) ?? 0} label='Памяти используется' color='#ec3f3f' showValue/>
       <ProgressBar progress={metrics?.cpu.load_percent.toFixed(2) ?? 0} label='Проциссер' color='#40c97e' showValue/>
     </div>
   );
