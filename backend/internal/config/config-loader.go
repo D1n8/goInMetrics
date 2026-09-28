@@ -12,7 +12,7 @@ type Config struct {
 }
 
 type ServerConfig struct {
-	Port		int 			`toml:"PORT"`
+	Port		int 			`toml:"BACKEND_PORT"`
 }
 
 type StatisticsConfig struct {
